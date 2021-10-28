@@ -2,11 +2,11 @@ sudo: required
 services:
   - docker
 
-variables:
-  docker_image: &docker_image iampeternguyen/docker-react
+env:
+  - DOCKER_IMAGE=iampeternguyen/docker-react
 
 before_install:
-  - docker build -t *docker_image -f Dockerfile.dev .
+  - docker build -t $DOCKER_IMAGE -f Dockerfile.dev .
 
 script:
-  - docker run *docker_image npm run test -- --watchAll=false
+  - docker run $DOCKER_IMAGE npm run test -- --watchAll=false
