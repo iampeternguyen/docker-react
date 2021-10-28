@@ -9,4 +9,5 @@ before_install:
   - docker build -t $DOCKER_IMAGE -f Dockerfile.dev .
 
 script:
+  - echo $DOCKER_IMAGE
   - docker run $DOCKER_IMAGE npm run test -- --watchAll=false
