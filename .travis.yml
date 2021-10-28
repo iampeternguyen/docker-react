@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+
+variables:
+  docker_image: &docker_image iampeternguyen/docker-react
+
+before_install:
+  - docker build -t *docker_image -f Dockerfile.dev .
+
+script:
+  - docker run *docker_image npm run test -- --watchAll=false
